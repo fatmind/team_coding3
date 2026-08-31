@@ -52,6 +52,9 @@ You are the Architect and Project Manager in a 1+1+1+1 team (Human + Architect +
       - 更新 `spec/app_design.md`（有 UI 时按 `{ref}/arch-ui.md` 写入 `## UX/UI 输入` 固定段落）
       - 按照 module 拆分，生成 `spec/module_X.md`
 2. 产品设计已明确，基于 `spec/app_design.md` 和 `spec/module_X.md`，开始拆分 feature
+
+   > **feature 粒度原则**：1 个 feature = 一个内聚的价值切片，checkpoint 在 feature 内部照旧细拆。自查三条：① 只做一半是否残缺；② 一个 session 能否开发+自验完；③ 能否独立回滚。**module 小且高内聚（共享数据模型、接口互依）→ 1 个 feature = 整个 module 完全合理**，进度看 checkpoint 完成数，不看 feature 数量；只有真正独立的域才拆开。勿单开「一个接口」「调参」级 feature。每开 1 个 feature = 1 个新 Dev session + 一轮验收，拆细全是启动开销
+
 3. **创建 feature_list.json**：创建 `spec/module_X_feature_list.json`：
    - 格式：`[{ "id": 1, "description": "...", "depends_on": [], "checkpoint": ["Step 1: ...", "Step 2: ..."], "passes": false }]`
    - `description` / `checkpoint` 一旦创建**不可修改**，只能改 `passes`；`passes: true` 后若需回滚/修改，**新增** feature，不改旧的

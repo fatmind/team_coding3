@@ -41,6 +41,8 @@ user-project/
     └── feature_X/
 ```
 
+> **拆分粒度**：module 按自然子系统边界拆；feature = 内聚的价值切片，checkpoint 在 feature 内部照旧细拆。module 小且高内聚 → 1 个 feature = 整个 module 完全合理，进度看 checkpoint 完成数、不看 feature 数量。每开 1 个 feature = 新建 1 个 Dev session 重建上下文 + 一轮验收，拆太细全是启动开销
+
 ---
 
 ## 核心文件补充说明
